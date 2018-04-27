@@ -1,4 +1,4 @@
-package org.minions.devfund.rafael;
+package minions.devfund.rafael;
 
 import org.junit.Test;
 
