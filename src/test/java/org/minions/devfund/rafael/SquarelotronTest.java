@@ -29,7 +29,7 @@ public class SquarelotronTest {
         int valueCell = 1;
         for (int indexX = 0; indexX < n; indexX++) {
             for (int indexY = 0; indexY < n; indexY++) {
-                assertEquals(valueCell, squarelotron.getSquarelotron()[indexX][indexY]);
+                assertEquals(valueCell, squarelotron.getSquarelotronGame()[indexX][indexY]);
                 valueCell++;
             }
         }

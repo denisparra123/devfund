@@ -13,16 +13,16 @@ public class Squarelotron {
 
     public static final int MULTIPLE_FOUR = 4;
     public static final int SIZE_SQUARE = 5;
-    private int[][] squarelotron;
+    private int[][] squarelotronGame;
     private int size;
 
     /**
-     * Gets  squarelotron variable.
+     * Gets  squarelotronGame variable.
      *
-     * @return int[] [] squarelotron game
+     * @return int[] [] squarelotronGame game
      */
-    public int[][] getSquarelotron() {
-        return squarelotron;
+    public int[][] getSquarelotronGame() {
+        return squarelotronGame;
     }
 
     /**
@@ -43,10 +43,10 @@ public class Squarelotron {
     public Squarelotron(int n) {
         this.size = n;
         int valueCell = 1;
-        squarelotron = new int[n][n];
+        squarelotronGame = new int[n][n];
         for (int indexX = 0; indexX < n; indexX++) {
             for (int indexY = 0; indexY < n; indexY++) {
-                this.squarelotron[indexX][indexY] = valueCell;
+                this.squarelotronGame[indexX][indexY] = valueCell;
                 valueCell++;
             }
         }
@@ -104,8 +104,8 @@ public class Squarelotron {
     }
 
     /**
-     * This method performs the Upside-Down Flip of the squarelotron, as described above,
-     * and returns the new squarelotron. The original squarelotron should not be modified
+     * This method performs the Upside-Down Flip of the squarelotronGame, as described above,
+     * and returns the new squarelotronGame. The original squarelotronGame should not be modified
      * (we will check for this).
      *
      * @param ring ring number
@@ -116,7 +116,7 @@ public class Squarelotron {
         for (int indexX = 0; indexX < size; indexX++) {
             for (int indexY = 0; indexY < size; indexY++) {
                 if (isOnRingValidator(indexX, indexY, ring)) {
-                    newSquarelotron.squarelotron[indexX][indexY] = this.squarelotron[size - 1 - indexX][indexY];
+                    newSquarelotron.squarelotronGame[indexX][indexY] = this.squarelotronGame[size - 1 - indexX][indexY];
                 }
             }
         }
@@ -124,8 +124,8 @@ public class Squarelotron {
     }
 
     /**
-     * This method performs the Main Diagonal Flip of the squarelotron, as described above, and returns
-     * the new squarelotron. The original squarelotron should not be modified (we will check for this).
+     * This method performs the Main Diagonal Flip of the squarelotronGame, as described above, and returns
+     * the new squarelotronGame. The original squarelotronGame should not be modified (we will check for this).
      *
      * @param ring ring number
      * @return Squarelotron square result
@@ -135,7 +135,7 @@ public class Squarelotron {
         for (int indexX = 0; indexX < size; indexX++) {
             for (int indexY = 0; indexY < size; indexY++) {
                 if (isOnRingValidator(indexX, indexY, ring)) {
-                    newSquarelotron.squarelotron[indexX][indexY] = this.squarelotron[indexY][indexX];
+                    newSquarelotron.squarelotronGame[indexX][indexY] = this.squarelotronGame[indexY][indexX];
                 }
             }
         }
@@ -143,10 +143,10 @@ public class Squarelotron {
     }
 
     /**
-     * The argument numberOfTurns indicates the number of times the entire squarelotron should be rotated 90° clockwise
+     * The argument numberOfTurns indicates the number of times the entire squarelotronGame should be rotated 90° clockwise
      * Any integer, including zero and negative integers, is allowable as the argument.
      * A value of -1 indicates a 90° counterclockwise rotation. This method modifies the internal representation
-     * of the squarelotron; it does not create a new squarelotron.
+     * of the squarelotronGame; it does not create a new squarelotronGame.
      *
      * @param numberOfTurns number of turns
      */
@@ -158,15 +158,15 @@ public class Squarelotron {
             Squarelotron newSquarelotron = new Squarelotron(size);
             for (int indexX = 0; indexX < size; indexX++) {
                 for (int indexY = 0; indexY < size; indexY++) {
-                    newSquarelotron.squarelotron[indexY][size - 1 - indexX] = squarelotron[indexX][indexY];
+                    newSquarelotron.squarelotronGame[indexY][size - 1 - indexX] = squarelotronGame[indexX][indexY];
                 }
             }
-            this.squarelotron = newSquarelotron.squarelotron;
+            this.squarelotronGame = newSquarelotron.squarelotronGame;
         }
     }
 
     /**
-     * Displays the squarelotron in the screen.
+     * Displays the squarelotronGame in the screen.
      *
      * @param size         size
      * @param squarelotron game
@@ -181,17 +181,17 @@ public class Squarelotron {
     }
 
     /**
-     * Verify that the matrix is equal to squarelotron.
+     * Verify that the matrix is equal to squarelotronGame.
      *
      * @param matrix matrix to compare
      * @return boolean true if the matrix are equals
      */
     public boolean isEqualMatrix(final int[][] matrix) {
-        if ((squarelotron.length != matrix.length) && (squarelotron[0].length != matrix[0].length)) {
+        if ((squarelotronGame.length != matrix.length) && (squarelotronGame[0].length != matrix[0].length)) {
             System.out.println("The Sizes are not equals");
             return false;
         }
-        return Arrays.deepEquals(squarelotron, matrix);
+        return Arrays.deepEquals(squarelotronGame, matrix);
     }
 
     /**
