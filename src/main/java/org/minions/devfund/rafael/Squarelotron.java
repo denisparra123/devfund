@@ -143,7 +143,8 @@ public class Squarelotron {
     }
 
     /**
-     * The argument numberOfTurns indicates the number of times the entire squarelotronGame should be rotated 90° clockwise
+     * The argument numberOfTurns indicates the number of times the entire squarelotronGame should be rotated 90°
+     * clockwise.
      * Any integer, including zero and negative integers, is allowable as the argument.
      * A value of -1 indicates a 90° counterclockwise rotation. This method modifies the internal representation
      * of the squarelotronGame; it does not create a new squarelotronGame.
