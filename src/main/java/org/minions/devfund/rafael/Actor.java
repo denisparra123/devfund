@@ -1,6 +1,7 @@
 package org.minions.devfund.rafael;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -23,7 +24,7 @@ public class Actor implements Comparable<Actor> {
      *
      * @param name Actor Name.
      */
-    public Actor(final String name) {
+    Actor(final String name) {
         this.name = name;
         movies = new ArrayList<>();
     }
@@ -40,7 +41,7 @@ public class Actor implements Comparable<Actor> {
      *
      * @return String: Actor name
      */
-    public String getName() {
+    String getName() {
         return name;
     }
 
@@ -58,7 +59,7 @@ public class Actor implements Comparable<Actor> {
      *
      * @return movies list
      */
-    public ArrayList<Movie> getMovies() {
+    List<Movie> getMovies() {
         return movies;
     }
 
@@ -67,8 +68,8 @@ public class Actor implements Comparable<Actor> {
      *
      * @param movies movie list
      */
-    public void setMovies(final ArrayList<Movie> movies) {
-        this.movies = movies;
+    public void setMovies(final List<Movie> movies) {
+        this.movies = (ArrayList<Movie>) movies;
     }
 
     /**

@@ -55,7 +55,6 @@ public class MovieDatabase {
                 String[] ratings = sc.nextLine().split("\t");
                 moviesDB.addRating(ratings[0], Double.parseDouble(ratings[1]));
             }
-            sc.close();
         } catch (Exception ex) {
             LOGGER.log(Level.INFO, ex.toString());
         }
@@ -78,11 +77,10 @@ public class MovieDatabase {
                     movies.get(actors[i]).add(actors[0]);
                 }
             }
-            for (String movie : movies.keySet()) {
-                List<String> actors = movies.get(movie);
-                moviesDB.addMovie(movie, actors.toArray(new String[0]));
+            for (Map.Entry<String, List<String>> movie : movies.entrySet()) {
+                List<String> actors = movies.get(movie.getKey());
+                moviesDB.addMovie(movie.getKey(), actors.toArray(new String[0]));
             }
-            sc.close();
         } catch (Exception ex) {
             LOGGER.log(Level.INFO, ex.toString());
         }
@@ -94,7 +92,7 @@ public class MovieDatabase {
      *
      * @return movie list
      */
-    public ArrayList<Movie> getMovieList() {
+    public List<Movie> getMovieList() {
         return this.movieList;
     }
 
@@ -103,7 +101,7 @@ public class MovieDatabase {
      *
      * @return actors list
      */
-    public ArrayList<Actor> getActorList() {
+    public List<Actor> getActorList() {
         return this.actorList;
     }
 
