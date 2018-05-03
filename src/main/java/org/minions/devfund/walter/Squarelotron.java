@@ -1,5 +1,7 @@
 package org.minions.devfund.walter;
 
+import java.util.Arrays;
+
 /**
  * {@link Squarelotron} class to handle the square matrix and operations.
  */
@@ -14,7 +16,7 @@ public class Squarelotron {
      * @return matrix.
      */
     public int[][] getSquarelotron() {
-        return squarelotron.clone();
+        return squarelotron;
     }
 
     /**
@@ -48,6 +50,7 @@ public class Squarelotron {
                 value++;
             }
         }
+        this.setSquarelotron(squarelotron);
     }
 
     /**
@@ -67,14 +70,16 @@ public class Squarelotron {
             cloneSquarelotron[min][i] = cloneSquarelotron[max][i];
             cloneSquarelotron[max][i] = pivot;
         }
-
-        for (int i = min; i <= max; i += max - min) {
-            int row = max - 1;
-            for (int j = min + 1; j < row; j++) {
-                pivot = cloneSquarelotron[j][i];
-                cloneSquarelotron[j][i] = cloneSquarelotron[row][i];
-                cloneSquarelotron[row][i] = pivot;
-                row--;
+        if(this.size != 1) {
+            for (int i = min; i <= max; i += max - min) {
+                int row = max - 1;
+                for (int j = min + 1; j < row; j++) {
+                    pivot = cloneSquarelotron[j][i];
+                    cloneSquarelotron[j][i] = cloneSquarelotron[row][i];
+                    cloneSquarelotron[row][i] = pivot;
+                    row--;
+                }
+                i = i == max ? i + 1 : i;
             }
         }
         newSquarelotron.setSquarelotron(cloneSquarelotron);
@@ -129,4 +134,32 @@ public class Squarelotron {
             setSquarelotron(ret);
         }
     }
+
+    /**
+     * Prints the Grid of a matrix squarelotron.
+     * @param matrix matrix squarelotron.
+     */
+    public void printMatrix(final int[][] matrix) {
+        for (int[] row : matrix) {
+            System.out.println(Arrays.toString(row)
+                    .replace("[", " | ")
+                    .replace(",", "")
+                    .replace("]", " | "));
+        }
+    }
+
+    /**
+     * Main method to execute the program.
+     * @param args String arguments.
+     */
+    public static void main(final String[] args) {
+        int size = 3;
+        int rotation = -2;
+        Squarelotron squarelotron = new Squarelotron(size);
+        squarelotron.upsideDownFlip(2);
+        squarelotron.printMatrix(squarelotron.squarelotron);
+    }
+
 }
+
+
