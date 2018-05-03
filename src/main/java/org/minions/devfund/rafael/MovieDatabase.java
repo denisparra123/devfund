@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 public class MovieDatabase {
     private ArrayList<Movie> movieList;
     private ArrayList<Actor> actorList;
-    private final static Logger LOGGER = Logger.getLogger(MovieDatabase.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(MovieDatabase.class.getName());
 
     /**
      * a constructor that just creates a new movieList and a new actorList.
