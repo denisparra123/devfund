@@ -1,17 +1,14 @@
 package org.minions.devfund.rafael;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.function.Supplier;
 import java.util.logging.Level;
-
-import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
+import java.util.logging.Logger;
 
 /**
  * This class has two instance variables:
@@ -35,6 +32,7 @@ import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 public class MovieDatabase {
     private ArrayList<Movie> movieList;
     private ArrayList<Actor> actorList;
+    private final static Logger LOGGER = Logger.getLogger(MovieDatabase.class.getName());
 
     /**
      * a constructor that just creates a new movieList and a new actorList.
