@@ -8,6 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.function.Supplier;
+import java.util.logging.Level;
+
+import static com.sun.xml.internal.ws.spi.db.BindingContextFactory.LOGGER;
 
 /**
  * This class has two instance variables:
@@ -47,15 +51,15 @@ public class MovieDatabase {
      * @param moviesDB Movie Data Base
      */
     private static void readRating(final MovieDatabase moviesDB) {
-        try {
-            Scanner sc = new Scanner(new File("resources/ratings.txt"));
+        try (Scanner sc = new Scanner(new File("resources/ratings.txt"))) {
             sc.nextLine();
             while (sc.hasNextLine()) {
                 String[] ratings = sc.nextLine().split("\t");
                 moviesDB.addRating(ratings[0], Double.parseDouble(ratings[1]));
             }
+            sc.close();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            LOGGER.log(Level.INFO, ex.toString());
         }
     }
 
@@ -66,8 +70,7 @@ public class MovieDatabase {
      */
     private static void readMovie(final MovieDatabase moviesDB) {
         Map<String, List<String>> movies = new HashMap<>();
-        try {
-            Scanner sc = new Scanner(new File("resources/movies.txt"));
+        try (Scanner sc = new Scanner(new File("resources/movies.txt"))) {
             while (sc.hasNextLine()) {
                 String[] actors = sc.nextLine().split(", ");
                 for (int i = 1; i < actors.length; i++) {
@@ -79,10 +82,11 @@ public class MovieDatabase {
             }
             for (String movie : movies.keySet()) {
                 List<String> actors = movies.get(movie);
-                moviesDB.addMovie(movie, actors.toArray(new String[actors.size()]));
+                moviesDB.addMovie(movie, actors.toArray(new String[0]));
             }
+            sc.close();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            LOGGER.log(Level.INFO, ex.toString());
         }
     }
 
@@ -215,7 +219,6 @@ public class MovieDatabase {
      * and the name of the highest rated movie.
      *
      * @param args argument list
-     * @throws FileNotFoundException
      */
     public static void main(final String[] args) {
         MovieDatabase movieDB = new MovieDatabase();
