@@ -14,21 +14,62 @@ import org.junit.Test;
  * @author Denis Parra
  */
 public class SquarelotronTest {
-    
-    private static final int[][] MATRIZ_ONE = new int [][] {{1}}; 
-    private static final int[][] MATRIZ_TWO = new int [][] {{1, 2}, {3, 4}}; 
-    private static final int[][] MATRIZ_THREE = new int [][] {{1, 2, 3}, 
-                                                              {4, 5, 6}, 
-                                                              {7, 8, 9}}; 
+
+    private static final int[][] MATRIZ_ONE = new int [][] {{1}};
+    private static final int[][] MATRIZ_TWO = new int [][] {{1, 2}, {3, 4}};
+    private static final int[][] MATRIZ_THREE = new int [][] {{1, 2, 3},
+                                                              {4, 5, 6},
+                                                              {7, 8, 9}};
     private static final int[][] MATRIZ_FOUR = new int [][] {{1, 2, 3, 4},
                                                              {5, 6, 7, 8},
                                                              {9, 10, 11, 12},
-                                                             {13, 14, 15, 16}}; 
+                                                             {13, 14, 15, 16}};
     private static final int[][] MATRIZ_FIVE = new int [][] {{1, 2, 3, 4, 5},
                                                              {6, 7, 8, 9, 10},
-                                                             {11, 12, 13, 14, 15}, 
+                                                             {11, 12, 13, 14, 15},
                                                              {16, 17, 18, 19, 20},
                                                              {21, 22, 23, 24, 25}};
+    private static final int[][] EXPECTED_ONE = {{3, 4}, {1, 2}};
+    private static final int[][] EXPECTTED_TWO = {{7, 8, 9}, {4, 5, 6}, {1, 2, 3}};
+    private static final int[][] EXPECTED_THREE = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    private static final int[][] EXPECTED_FOUR = {{13, 14, 15, 16}, {9, 6, 7, 12}, {5, 10, 11, 8}, {1, 2, 3, 4}};
+    private static final int[][] EXPECTED_FIVE = {{1, 2, 3, 4},{5, 10, 11, 8},{9, 6, 7, 12}, {13, 14, 15, 16}};
+    private static final int[][] EXPECTED_SIX = {{21, 22, 23, 24, 25},
+                                                 {16, 7, 8, 9, 20},
+                                                 {11, 12, 13, 14, 15},
+                                                 {6, 17, 18, 19, 10},
+                                                 {1, 2, 3, 4, 5}};
+    private static final int[][] EXPECTED_SEVEN = {{1, 2, 3, 4, 5},
+                                                   {6, 17, 18, 19, 10},
+                                                   {11, 12, 13, 14, 15},
+                                                   {16, 7, 8, 9, 20},
+                                                   {21, 22, 23, 24, 25}};
+    private static final int[][] EXECTED_EIGTH = {{1, 2, 3, 4, 5},
+                                                  {6, 7, 8, 9, 10},
+                                                  {11, 12, 13, 14, 15},
+                                                  {16, 17, 18, 19, 20},
+                                                  {21, 22, 23, 24, 25}};
+    private static final int[][] EXPECTED_NINE = {{1, 3}, {2, 4}};
+    private static final int[][] EXPECTED_TEN = {{1, 4, 7}, {2, 5, 8}, {3, 6, 9}};
+    private static final int[][] EXPECTED_ELEVEN = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    private static final int[][] EXPECTED_TWELVE = {{1, 5, 9, 13}, {2, 6, 7, 14}, {3, 10, 11, 15}, {4, 8, 12, 16}};
+    private static final int[][] EXPECTED_THIRTEEN = {{1, 2, 3, 4}, {5, 6, 10, 8}, {9, 7, 11, 12}, {13, 14, 15, 16}};
+    private static final int[][] EXPECTED_FORTEEN = {{1, 6, 11, 16, 21},
+                                                     {2, 7, 8, 9, 22},
+                                                     {3, 12, 13, 14, 23},
+                                                     {4, 17, 18, 19, 24},
+                                                     {5, 10, 15, 20, 25}};
+    private static final int[][] EXPECTED_FIFTHEEN = {{1, 2, 3, 4, 5},
+                                                      {6, 7, 12, 17, 10},
+                                                      {11, 8, 13, 18, 15},
+                                                      {16, 9, 14, 19, 20},
+                                                      {21, 22, 23, 24, 25}};
+    private static final int[][] EXPECTED_SIXTEEN = {{7, 4, 1}, {8, 5, 2}, {9, 6, 3}};
+    private static final int[][] EXPECTED_SEVENTEEN = {{9, 8, 7}, {6, 5, 4}, {3, 2, 1}};
+    private static final int[][] EXPECTED_EIGTHEEN = {{3, 6, 9}, {2, 5, 8}, {1, 4, 7}};
+    private static final int[][] EXPECTED_NINETTEN = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    private static final int[][] EXPECTED_TWENTY_ONE = {{7, 4, 1}, {8, 5, 2}, {9, 6, 3}};
+    private static final int[][] EXPECTED_TWENTY_TWO = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     private static final int ONE = 1;
     private static final int TWO = 2;
     private static final int THREE = 3;
@@ -108,8 +149,7 @@ public class SquarelotronTest {
     public void testUpsideDownFlipInMatrizTwoByTwo() {
         Squarelotron squarelotron = new Squarelotron(TWO);
         int[][] result = squarelotron.upsideDownFlip(ONE);
-        int[][] expected = {{3, 4}, {1, 2}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_ONE, result);
     }
 
     /**
@@ -118,9 +158,8 @@ public class SquarelotronTest {
     @Test
     public void testUpsideDownFlipInMatrizThreeByThree() {
         Squarelotron squarelotron = new Squarelotron(THREE);
-        int[][] result = squarelotron.upsideDownFlip(1);
-        int[][] expected = {{7, 8, 9}, {4, 5, 6}, {1, 2, 3}};
-        Assert.assertArrayEquals(expected, result);
+        int[][] result = squarelotron.upsideDownFlip(ONE);
+        Assert.assertArrayEquals(EXPECTTED_TWO, result);
     }
 
     /**
@@ -130,8 +169,7 @@ public class SquarelotronTest {
     public void testUpsideDownFlipInMatrizThreeByThreeSecondRing() {
         Squarelotron squarelotron = new Squarelotron(THREE);
         int[][] result = squarelotron.upsideDownFlip(TWO);
-        int[][] expected = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_THREE, result);
     }
 
     
@@ -142,8 +180,7 @@ public class SquarelotronTest {
     public void testUpsideDownFlipInMatrizFourByFour() {
         Squarelotron squarelotron = new Squarelotron(FOUR);
         int[][] result = squarelotron.upsideDownFlip(ONE);
-        int[][] expected = {{13, 14, 15, 16}, {9, 6, 7, 12}, {5, 10, 11, 8}, {1, 2, 3, 4}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_FOUR, result);
     }
 
     /**
@@ -153,8 +190,7 @@ public class SquarelotronTest {
     public void testUpsideDownFlipInMatrizFourByFourSecondRing() {
         Squarelotron squarelotron = new Squarelotron(FOUR);
         int[][] result = squarelotron.upsideDownFlip(TWO);
-        int[][] expected = {{1, 2, 3, 4},{5, 10, 11, 8},{9, 6, 7, 12}, {13, 14, 15, 16}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_FIVE, result);
     }
 
     /**
@@ -164,12 +200,7 @@ public class SquarelotronTest {
     public void testUpsideDownFlipInMatrizFivebyFive() {
         Squarelotron squarelotron = new Squarelotron(FIVE);
         int[][] result = squarelotron.upsideDownFlip(ONE);
-        int[][] expected = {{21, 22, 23, 24, 25},
-                            {16, 7, 8, 9, 20},
-                            {11, 12, 13, 14, 15}, 
-                            {6, 17, 18, 19, 10},
-                            {1, 2, 3, 4, 5}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_SIX, result);
     }
 
     /**
@@ -179,12 +210,7 @@ public class SquarelotronTest {
     public void testUpsideDownFlipInMatrizFivebyFiveSeconRing() {
         Squarelotron squarelotron = new Squarelotron(FIVE);
         int[][] result = squarelotron.upsideDownFlip(TWO);
-        int[][] expected = {{1, 2, 3, 4, 5},
-                            {6, 17, 18, 19, 10},
-                            {11, 12, 13, 14, 15}, 
-                            {16, 7, 8, 9, 20},
-                            {21, 22, 23, 24, 25}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_SEVEN, result);
     }
 
     
@@ -195,12 +221,7 @@ public class SquarelotronTest {
     public void testUpsideDownFlipInMatrizFivebyFiveThirdRing() {
         Squarelotron squarelotron = new Squarelotron(FIVE);
         int[][] result = squarelotron.upsideDownFlip(THREE);
-        int[][] expected = {{1, 2, 3, 4, 5},
-                            {6, 7, 8, 9, 10},
-                            {11, 12, 13, 14, 15}, 
-                            {16, 17, 18, 19, 20},
-                            {21, 22, 23, 24, 25}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXECTED_EIGTH, result);
     }
 
     /**
@@ -210,8 +231,7 @@ public class SquarelotronTest {
     public void testSquarelotronMainDiagonalFlipInMatrizTwoByTwo() {
         Squarelotron squarelotron = new Squarelotron(TWO);
         int[][] result = squarelotron.squarelotronMainDiagonalFlip(ONE);
-        int[][] expected = {{1, 3}, {2, 4}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_NINE, result);
     }
 
     /**
@@ -221,8 +241,7 @@ public class SquarelotronTest {
     public void testSquarelotronMainDiagonalFlipInMatrizThreeByThree() {
         Squarelotron squarelotron = new Squarelotron(THREE);
         int[][] result = squarelotron.squarelotronMainDiagonalFlip(ONE);
-        int[][] expected = {{1, 4, 7}, {2, 5, 8}, {3, 6, 9}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_TEN, result);
     }
 
     /**
@@ -232,8 +251,7 @@ public class SquarelotronTest {
     public void testSquarelotronMainDiagonalFlipInMatrizThreeByThreeSeconRing() {
         Squarelotron squarelotron = new Squarelotron(THREE);
         int[][] result = squarelotron.squarelotronMainDiagonalFlip(TWO);
-        int[][] expected = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_ELEVEN, result);
     }
 
     
@@ -244,8 +262,7 @@ public class SquarelotronTest {
     public void testSquarelotronMainDiagonalFlipInMatrizFourByFour() {
         Squarelotron squarelotron = new Squarelotron(FOUR);
         int[][] result = squarelotron.squarelotronMainDiagonalFlip(ONE);
-        int[][] expected = {{1, 5, 9, 13}, {2, 6, 7, 14}, {3, 10, 11, 15}, {4, 8, 12, 16}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_TWELVE, result);
     }
 
     
@@ -256,8 +273,7 @@ public class SquarelotronTest {
     public void testSquarelotronMainDiagonalFlipInMatrizFourByFourSecondRing() {
         Squarelotron squarelotron = new Squarelotron(FOUR);
         int[][] result = squarelotron.squarelotronMainDiagonalFlip(TWO);
-        int[][] expected = {{1, 2, 3, 4}, {5, 6, 10, 8}, {9, 7, 11, 12}, {13, 14, 15, 16}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_THIRTEEN, result);
     }
 
     
@@ -268,8 +284,7 @@ public class SquarelotronTest {
     public void testSquarelotronMainDiagonalFlipInMatrizFiveByFive() {
         Squarelotron squarelotron = new Squarelotron(FIVE);
         int[][] result = squarelotron.squarelotronMainDiagonalFlip(ONE);
-        int[][] expected = {{1, 6, 11, 16, 21}, {2, 7, 8, 9, 22}, {3, 12, 13, 14, 23}, {4, 17, 18, 19, 24}, {5, 10, 15, 20, 25}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_FORTEEN, result);
     }
 
     
@@ -280,8 +295,7 @@ public class SquarelotronTest {
     public void testSquarelotronMainDiagonalFlipInMatrizFiveByFiveSecondRing() {
         Squarelotron squarelotron = new Squarelotron(FIVE);
         int[][] result = squarelotron.squarelotronMainDiagonalFlip(TWO);
-        int[][] expected = {{1, 2, 3, 4, 5}, {6, 7, 12, 17, 10}, {11, 8, 13, 18, 15}, {16, 9, 14, 19, 20}, {21, 22, 23, 24, 25}};
-        Assert.assertArrayEquals(expected, result);
+        Assert.assertArrayEquals(EXPECTED_FIFTHEEN, result);
     }
 
     
@@ -300,10 +314,9 @@ public class SquarelotronTest {
      */
     @Test
     public void testRotateRigthOneTime() {
-        Squarelotron squarelotron = new Squarelotron(3);
+        Squarelotron squarelotron = new Squarelotron(THREE);
         squarelotron.rotateRigth(ONE);
-        int[][] expected = {{7, 4, 1}, {8, 5, 2}, {9, 6, 3}};
-        Assert.assertArrayEquals(expected, squarelotron.getMatriz());
+        Assert.assertArrayEquals(EXPECTED_SIXTEEN, squarelotron.getMatriz());
     }
 
     /**
@@ -311,10 +324,9 @@ public class SquarelotronTest {
      */    
     @Test
     public void testRotateRigthTwoTimes() {
-        Squarelotron squarelotron = new Squarelotron(3);
+        Squarelotron squarelotron = new Squarelotron(THREE);
         squarelotron.rotateRigth(TWO);
-        int[][] expected = {{9, 8, 7}, {6, 5, 4}, {3, 2, 1}};
-        Assert.assertArrayEquals(expected, squarelotron.getMatriz());
+        Assert.assertArrayEquals(EXPECTED_SEVENTEEN, squarelotron.getMatriz());
     }
     
     /**
@@ -322,10 +334,9 @@ public class SquarelotronTest {
      */
     @Test
     public void testRotateRigthThreeTimes() {
-        Squarelotron squarelotron = new Squarelotron(3);
+        Squarelotron squarelotron = new Squarelotron(THREE);
         squarelotron.rotateRigth(THREE);
-        int[][] expected = {{3, 6, 9}, {2, 5, 8}, {1, 4, 7}};
-        Assert.assertArrayEquals(expected, squarelotron.getMatriz());
+        Assert.assertArrayEquals(EXPECTED_EIGTHEEN, squarelotron.getMatriz());
     }
 
         
@@ -336,8 +347,7 @@ public class SquarelotronTest {
     public void testRotateRigthFourTimes() {
         Squarelotron squarelotron = new Squarelotron(3);
         squarelotron.rotateRigth(FOUR);
-        int[][] expected = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        Assert.assertArrayEquals(expected, squarelotron.getMatriz());
+        Assert.assertArrayEquals(EXPECTED_NINETTEN, squarelotron.getMatriz());
     }
 
         
@@ -346,10 +356,9 @@ public class SquarelotronTest {
      */
     @Test
     public void testRotateRigthOneTimeNegative() {
-        Squarelotron squarelotron = new Squarelotron(3);
+        Squarelotron squarelotron = new Squarelotron(THREE);
         squarelotron.rotateRigth(ONE_NEGATIVE);
-        int[][] expected = {{3, 6, 9}, {2, 5, 8}, {1, 4, 7}};
-        Assert.assertArrayEquals(expected, squarelotron.getMatriz());
+        Assert.assertArrayEquals(EXPECTED_EIGTHEEN, squarelotron.getMatriz());
     }
 
         
@@ -358,10 +367,9 @@ public class SquarelotronTest {
      */
     @Test
     public void testRotateRigthTwoTimesNegative() {
-        Squarelotron squarelotron = new Squarelotron(3);
+        Squarelotron squarelotron = new Squarelotron(THREE);
         squarelotron.rotateRigth(TWO_NEGATIVE);
-        int[][] expected = {{9, 8, 7}, {6, 5, 4}, {3, 2, 1}};
-        Assert.assertArrayEquals(expected, squarelotron.getMatriz());
+        Assert.assertArrayEquals(EXPECTED_SEVENTEEN, squarelotron.getMatriz());
     }
     
     /**
@@ -369,10 +377,9 @@ public class SquarelotronTest {
      */
     @Test
     public void testRotateRigthThreeTimesNegative() {
-        Squarelotron squarelotron = new Squarelotron(3);
+        Squarelotron squarelotron = new Squarelotron(THREE);
         squarelotron.rotateRigth(THREE_NEGATIVE);
-        int[][] expected = {{7, 4, 1}, {8, 5, 2}, {9, 6, 3}};
-        Assert.assertArrayEquals(expected, squarelotron.getMatriz());
+        Assert.assertArrayEquals(EXPECTED_TWENTY_ONE, squarelotron.getMatriz());
     }
 
         
@@ -381,9 +388,8 @@ public class SquarelotronTest {
      */
     @Test
     public void testRotateRigthFourTimesNegative() {
-        Squarelotron squarelotron = new Squarelotron(3);
+        Squarelotron squarelotron = new Squarelotron(THREE);
         squarelotron.rotateRigth(FOUR_NEGATIVE);
-        int[][] expected = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        Assert.assertArrayEquals(expected, squarelotron.getMatriz());
+        Assert.assertArrayEquals(EXPECTED_TWENTY_TWO, squarelotron.getMatriz());
     }
 }
