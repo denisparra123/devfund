@@ -33,7 +33,7 @@ public class SquarelotronTest {
     private static final int[][] EXPECTTED_TWO = {{7, 8, 9}, {4, 5, 6}, {1, 2, 3}};
     private static final int[][] EXPECTED_THREE = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     private static final int[][] EXPECTED_FOUR = {{13, 14, 15, 16}, {9, 6, 7, 12}, {5, 10, 11, 8}, {1, 2, 3, 4}};
-    private static final int[][] EXPECTED_FIVE = {{1, 2, 3, 4}, {5, 10, 11, 8},{9, 6, 7, 12}, {13, 14, 15, 16}};
+    private static final int[][] EXPECTED_FIVE = {{1, 2, 3, 4}, {5, 10, 11, 8}, {9, 6, 7, 12}, {13, 14, 15, 16}};
     private static final int[][] EXPECTED_SIX = {{21, 22, 23, 24, 25},
                                                  {16, 7, 8, 9, 20},
                                                  {11, 12, 13, 14, 15},
@@ -314,14 +314,14 @@ public class SquarelotronTest {
 
     /**
      * Test to retotate rigth curretn matriz.
-     */    
+     */
     @Test
     public void testRotateRigthTwoTimes() {
         Squarelotron squarelotron = new Squarelotron(THREE);
         squarelotron.rotateRigth(TWO);
         Assert.assertArrayEquals(EXPECTED_SEVENTEEN, squarelotron.getMatriz());
     }
-    
+
     /**
      * Test to retotate rigth curretn matriz.
      */
@@ -361,7 +361,7 @@ public class SquarelotronTest {
         squarelotron.rotateRigth(TWO_NEGATIVE);
         Assert.assertArrayEquals(EXPECTED_SEVENTEEN, squarelotron.getMatriz());
     }
-    
+
     /**
      * Test to retotate rigth curretn matriz.
      */
