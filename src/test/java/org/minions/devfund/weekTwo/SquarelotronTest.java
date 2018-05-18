@@ -15,16 +15,16 @@ import org.junit.Test;
  */
 public class SquarelotronTest {
 
-    private static final int[][] MATRIZ_ONE = new int [][] {{1}};
-    private static final int[][] MATRIZ_TWO = new int [][] {{1, 2}, {3, 4}};
-    private static final int[][] MATRIZ_THREE = new int [][] {{1, 2, 3},
+    private static final int[][] MATRIZ_ONE = new int[][] {{1}};
+    private static final int[][] MATRIZ_TWO = new int[][] {{1, 2}, {3, 4}};
+    private static final int[][] MATRIZ_THREE = new int[][] {{1, 2, 3},
                                                               {4, 5, 6},
                                                               {7, 8, 9}};
-    private static final int[][] MATRIZ_FOUR = new int [][] {{1, 2, 3, 4},
+    private static final int[][] MATRIZ_FOUR = new int[][] {{1, 2, 3, 4},
                                                              {5, 6, 7, 8},
                                                              {9, 10, 11, 12},
                                                              {13, 14, 15, 16}};
-    private static final int[][] MATRIZ_FIVE = new int [][] {{1, 2, 3, 4, 5},
+    private static final int[][] MATRIZ_FIVE = new int[][] {{1, 2, 3, 4, 5},
                                                              {6, 7, 8, 9, 10},
                                                              {11, 12, 13, 14, 15},
                                                              {16, 17, 18, 19, 20},
@@ -33,7 +33,7 @@ public class SquarelotronTest {
     private static final int[][] EXPECTTED_TWO = {{7, 8, 9}, {4, 5, 6}, {1, 2, 3}};
     private static final int[][] EXPECTED_THREE = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
     private static final int[][] EXPECTED_FOUR = {{13, 14, 15, 16}, {9, 6, 7, 12}, {5, 10, 11, 8}, {1, 2, 3, 4}};
-    private static final int[][] EXPECTED_FIVE = {{1, 2, 3, 4},{5, 10, 11, 8},{9, 6, 7, 12}, {13, 14, 15, 16}};
+    private static final int[][] EXPECTED_FIVE = {{1, 2, 3, 4}, {5, 10, 11, 8},{9, 6, 7, 12}, {13, 14, 15, 16}};
     private static final int[][] EXPECTED_SIX = {{21, 22, 23, 24, 25},
                                                  {16, 7, 8, 9, 20},
                                                  {11, 12, 13, 14, 15},
@@ -172,7 +172,6 @@ public class SquarelotronTest {
         Assert.assertArrayEquals(EXPECTED_THREE, result);
     }
 
-    
     /**
      * Test to upside Down Flip method.
      */
@@ -213,7 +212,6 @@ public class SquarelotronTest {
         Assert.assertArrayEquals(EXPECTED_SEVEN, result);
     }
 
-    
     /**
      * Test to upside Down Flip method.
      */
@@ -254,7 +252,6 @@ public class SquarelotronTest {
         Assert.assertArrayEquals(EXPECTED_ELEVEN, result);
     }
 
-    
     /**
      * Test to main diagonal flip method..
      */
@@ -265,7 +262,6 @@ public class SquarelotronTest {
         Assert.assertArrayEquals(EXPECTED_TWELVE, result);
     }
 
-    
     /**
      * Test to main diagonal flip method..
      */
@@ -276,7 +272,6 @@ public class SquarelotronTest {
         Assert.assertArrayEquals(EXPECTED_THIRTEEN, result);
     }
 
-    
     /**
      * Test to main diagonal flip method..
      */
@@ -287,7 +282,6 @@ public class SquarelotronTest {
         Assert.assertArrayEquals(EXPECTED_FORTEEN, result);
     }
 
-    
     /**
      * Test to main diagonal flip method..
      */
@@ -298,7 +292,6 @@ public class SquarelotronTest {
         Assert.assertArrayEquals(EXPECTED_FIFTHEEN, result);
     }
 
-    
     /**
      * Test to main diagonal flip method..
      */
@@ -339,18 +332,16 @@ public class SquarelotronTest {
         Assert.assertArrayEquals(EXPECTED_EIGTHEEN, squarelotron.getMatriz());
     }
 
-        
     /**
      * Test to retotate rigth curretn matriz.
      */
     @Test
     public void testRotateRigthFourTimes() {
-        Squarelotron squarelotron = new Squarelotron(3);
+        Squarelotron squarelotron = new Squarelotron(THREE);
         squarelotron.rotateRigth(FOUR);
         Assert.assertArrayEquals(EXPECTED_NINETTEN, squarelotron.getMatriz());
     }
 
-        
     /**
      * Test to retotate rigth curretn matriz.
      */
@@ -361,7 +352,6 @@ public class SquarelotronTest {
         Assert.assertArrayEquals(EXPECTED_EIGTHEEN, squarelotron.getMatriz());
     }
 
-        
     /**
      * Test to retotate rigth curretn matriz.
      */
@@ -382,7 +372,6 @@ public class SquarelotronTest {
         Assert.assertArrayEquals(EXPECTED_TWENTY_ONE, squarelotron.getMatriz());
     }
 
-        
     /**
      * Test to retotate rigth curretn matriz.
      */
